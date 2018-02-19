@@ -1,0 +1,3 @@
+[submodule "grow_recipe/schema"]
+	path = grow_recipe/schema
+	url = https://github.com/njason/plant-recipe-schema

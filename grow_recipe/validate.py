@@ -4,7 +4,7 @@ import os
 import argparse
 from lxml import etree
 
-DEFAULT_SCHEMA = os.path.join(os.path.dirname(__file__), 'recipe.xsd')
+DEFAULT_SCHEMA = os.path.join(os.path.dirname(__file__), 'schema/recipe.xsd')
 
 def valid(xml_file, schema=None):
 
