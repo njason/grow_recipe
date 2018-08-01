@@ -3,7 +3,7 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='plant-recipe-schema',
+    name='grow_recipe',
     version='0.3.0',
     author='Jason Biegel',
     license='LICENSE',
