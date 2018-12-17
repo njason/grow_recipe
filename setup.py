@@ -3,8 +3,8 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='plant-recipe-schema',
-    version='0.3.0',
+    name='grow-recipe',
+    version='0.4.0',
     author='Jason Biegel',
     license='LICENSE',
     description='Store plant grow recipes in a structured XML format',
