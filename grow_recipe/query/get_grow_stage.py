@@ -2,7 +2,7 @@ from datetime import datetime
 
 from lxml import etree
 
-from grow_recipe import constants, error
+from grow_recipe import constants, check_for_error
 
 
 def get_grow_stage(xml, start_time, query_time=None):
@@ -14,7 +14,7 @@ def get_grow_stage(xml, start_time, query_time=None):
     xml.seek(0)
 
     # raise schema errors if they exist
-    error(xml)
+    check_for_error(xml)
 
     xml.seek(0)
 
@@ -36,7 +36,7 @@ def get_grow_stage(xml, start_time, query_time=None):
 
     for stage in root.getchildren():
 
-        if stage.tag == constants.Stages.DEFAULT.value:
+        if stage.tag == constants.DEFAULT:
             continue
 
         duration_str = stage.attrib.get('duration')
@@ -45,6 +45,6 @@ def get_grow_stage(xml, start_time, query_time=None):
         duration = int(duration_str)
 
         if seconds_diff < time_counter + duration:
-            return constants.Stages(stage.tag)
+            return stage.tag
 
         time_counter += duration

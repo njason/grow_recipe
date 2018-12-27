@@ -1,6 +1,6 @@
 from io import StringIO
 
-from grow_recipe import find_metric_value
+from grow_recipe import constants, find_metric_value
 
 
 def test_basic():
@@ -17,7 +17,7 @@ def test_basic():
     )
 
     temperature = find_metric_value(
-        xml, 'germination', 'air', 'temperature')
+        xml, constants.GERMINATION, constants.AIR, constants.T9E)
 
     assert temperature.min == 20.0
     assert temperature.max == 25.0
@@ -37,7 +37,7 @@ def test_default():
     )
 
     temperature = find_metric_value(
-        xml, 'germination', 'air', 'temperature')
+        xml, constants.GERMINATION, constants.AIR, constants.T9E)
 
     assert temperature.min == 20.0
     assert temperature.max == 25.0
@@ -62,7 +62,7 @@ def test_override():
     )
 
     temperature = find_metric_value(
-        xml, 'germination', 'air', 'temperature')
+        xml, constants.GERMINATION, constants.AIR, constants.T9E)
 
     assert temperature.min == 30.0
     assert temperature.max == 35.0
@@ -87,7 +87,7 @@ def test_no_stage():
     )
 
     temperature = find_metric_value(
-        xml, None, 'air', 'temperature')
+        xml, None, constants.AIR, constants.T9E)
 
     assert temperature.min == 20.0
     assert temperature.max == 25.0

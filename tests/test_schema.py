@@ -3,7 +3,7 @@ from io import StringIO
 import pytest
 from lxml.etree import XMLSyntaxError
 
-from grow_recipe import error
+from grow_recipe import check_for_error
 
 
 def test_basic():
@@ -13,10 +13,10 @@ def test_basic():
         </recipe>
         '''
     )
-    assert not error(xml1)
+    assert not check_for_error(xml1, raise_exception=False)
 
     # empty buffer is not valid
     xml2 = StringIO('')
-    assert error(xml2, raise_exception=False) == "line 1: b'Document is empty'"
+    assert check_for_error(xml2, raise_exception=False) == 'Error parsing XML'
     with pytest.raises(XMLSyntaxError):
-        error(xml2)
+        check_for_error(xml2)

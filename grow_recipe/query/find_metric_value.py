@@ -1,6 +1,6 @@
 from lxml import etree
 
-from grow_recipe import constants, error
+from grow_recipe import constants, check_for_error
 
 
 class Metric:
@@ -26,14 +26,14 @@ def find_metric_value(xml, stage, topic, metric):
     xml.seek(0)
 
     # raise schema errors if they exist
-    error(xml)
+    check_for_error(xml)
 
     xml.seek(0)
 
     tree = etree.parse(xml)
 
     if not stage:
-        stage = constants.Stages.DEFAULT.value
+        stage = constants.DEFAULT
 
     value = tree.xpath('/{root}/{stage}/{topic}/{metric}'
                        .format(root=constants.ROOT_NODE, stage=stage,
@@ -42,8 +42,10 @@ def find_metric_value(xml, stage, topic, metric):
     if not value:
         value = tree.xpath('/{root}/{stage}/{topic}/{metric}'.format(
             root=constants.ROOT_NODE,
-            stage=constants.Stages.DEFAULT.value, topic=topic,
-            metric=metric))
+            stage=constants.DEFAULT,
+            topic=topic,
+            metric=metric
+        ))
 
     if not value:
         return None

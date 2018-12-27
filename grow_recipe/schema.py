@@ -1,5 +1,5 @@
 """
-Validates a an XML file with an XML schema. Nothing grow recipe specific
+Utilities for interfacing with XML schemas. A wrapper around lxml
 """
 import os
 from functools import wraps
@@ -9,9 +9,10 @@ from lxml import etree
 DEFAULT_SCHEMA = os.path.join(os.path.dirname(__file__), 'schema/recipe.xsd')
 
 
-def error(xml, schema=None, raise_exception=True):
+def check_for_error(xml, schema=None, raise_exception=True):
     """
-    Returns the schema error message, if there is no errors it returns None
+    Returns or raises the schema error message. If there is no errors it returns None.
+    If there are multiple errors, only returns or raises the first error.
     """
 
     if not schema:
@@ -28,6 +29,9 @@ def error(xml, schema=None, raise_exception=True):
         if raise_exception:
             raise
 
-        return e.msg
+        if e.msg:
+            return e.msg
+        else:
+            return 'Error parsing XML'
 
     return None

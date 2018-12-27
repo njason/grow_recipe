@@ -17,7 +17,7 @@ def test_basic():
 
     stage = get_grow_stage(xml, timestamp, timestamp)
 
-    assert stage == constants.Stages.GERMINATION
+    assert stage == constants.GERMINATION
 
 
 def test_second_stage():
@@ -35,7 +35,7 @@ def test_second_stage():
     stage = get_grow_stage(
         xml, timestamp, timestamp + timedelta(seconds=1))
 
-    assert stage == constants.Stages.VEGETATIVE
+    assert stage == constants.VEGETATIVE
 
 
 def test_grow_time_out_of_range():
