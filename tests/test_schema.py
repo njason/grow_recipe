@@ -17,6 +17,12 @@ def test_basic():
 
     # empty buffer is not valid
     xml2 = StringIO('')
-    assert check_for_error(xml2, raise_exception=False) == 'Error parsing XML'
+
+    # bug in lxml?
+    assert check_for_error(xml2, raise_exception=False) in (
+        'Error parsing XML',  # macOS (exception msg is None)
+        "line 1: b'Document is empty'" # Ubuntu
+    )
+
     with pytest.raises(XMLSyntaxError):
         check_for_error(xml2)
