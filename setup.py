@@ -6,6 +6,7 @@ setup(
     name='grow-recipe',
     version='0.8.0',
     author='Jason Biegel',
+    url='https://github.com/njason/grow-recipe-python',
     license='LICENSE',
     description='Store plant grow recipes in a structured XML format',
     packages=find_packages(exclude=['docs', 'samples', 'tests']),
