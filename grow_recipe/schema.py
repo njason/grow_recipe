@@ -6,7 +6,7 @@ from functools import wraps
 
 from lxml import etree
 
-DEFAULT_SCHEMA = os.path.join(os.path.dirname(__file__), 'schema/recipe.xsd')
+DEFAULT_SCHEMA = os.path.join(os.path.dirname(__file__), 'grow-recipe.xsd')
 
 
 def check_for_error(xml, schema=None, raise_exception=True):
