@@ -11,6 +11,7 @@ A python module to provide functionality to the [Grow Recipe Schema](https://git
 
 
 ## Usage
+
 ```
 from datetime import datetime
 
@@ -30,12 +31,9 @@ print('Temperature maximum ' + temperature_range.max)
 
 ## Development
 
-Unfortunately, PyPI does not support 
+Setup with pip:
+`$ pip install -r requirements.txt`
 
-
-This command updates the latest schema from the schema submodule:
-`$ git submodule foreach git pull origin master`
-
-
-### Testing
 To run tests, run `$ pytest`
+
+Unfortunately, setuptools does not support submodules (to my knowledge). So the [XML schema](grow_recipe/grow-recipe.xsd) must be kept updated with the [source](https://github.com/njason/grow-recipe-schema/blob/master/grow-recipe.xsd)
