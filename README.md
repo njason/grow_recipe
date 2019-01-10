@@ -1,6 +1,13 @@
 # Grow Recipe Python Wrapper
 
-A module to provide functionality to the [Grow Recipe Schema](https://github.com/njason/grow-recipe-schema)
+A python module to provide functionality to the [Grow Recipe Schema](https://github.com/njason/grow-recipe-schema)
+
+
+## Installation
+
+[pip](https://pip.pypa.io/en/stable/):
+
+`$ pip install grow-recipe`
 
 
 ## Usage
@@ -23,8 +30,7 @@ print('Temperature maximum ' + temperature_range.max)
 
 ## Development
 
-This repo references a submodule, to properly clone this repo with the required submodule, run this command:
-`$ git clone --recurse-submodules https://github.com/njason/grow-recipe-python`
+Unfortunately, PyPI does not support 
 
 
 This command updates the latest schema from the schema submodule:

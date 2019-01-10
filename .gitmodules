@@ -1,3 +1,0 @@
-[submodule "grow-recipe-schema"]
-	path = grow_recipe/schema
-	url = https://github.com/njason/grow-recipe-schema
