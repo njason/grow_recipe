@@ -1,12 +1,21 @@
 from io import StringIO
 
 import pytest
-from lxml.etree import XMLSyntaxError
+
+LXML_INSTALLED = True
+try:
+    from lxml.etree import XMLSyntaxError
+except ModuleNotFoundError:
+    LXML_INSTALLED = False
 
 from grow_recipe import check_for_error
 
 
 def test_basic():
+
+    if not LXML_INSTALLED:
+        pytest.skip('lxml package needs to be installed')
+
     xml1 = StringIO(
         '''
         <recipe>

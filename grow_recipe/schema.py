@@ -1,12 +1,19 @@
 """
 Utilities for interfacing with XML schemas. A wrapper around lxml
 """
+import logging
 import os
 from functools import wraps
 
-from lxml import etree
+LXML_INSTALLED = True
+try:
+    from lxml import etree
+except ModuleNotFoundError:
+    LXML_INSTALLED = False
 
 DEFAULT_SCHEMA = os.path.join(os.path.dirname(__file__), 'grow-recipe.xsd')
+
+logger = logging.getLogger('grow-recipe')
 
 
 def check_for_error(xml, schema=None, raise_exception=True):
@@ -14,6 +21,11 @@ def check_for_error(xml, schema=None, raise_exception=True):
     Returns or raises the schema error message. If there is no errors it returns None.
     If there are multiple errors, only returns or raises the first error.
     """
+
+    if not LXML_INSTALLED:
+        logger.warning('Cannot validate grow recipe against schema without '
+                       'lxml package installed')
+        return None
 
     if not schema:
         with open(DEFAULT_SCHEMA, 'r') as schema_file:

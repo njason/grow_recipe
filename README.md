@@ -2,6 +2,12 @@
 
 A python module to provide functionality to the [Grow Recipe Schema](https://github.com/njason/grow-recipe-schema)
 
+NOTE: [lxml](https://lxml.de/) is not a requirement, however grow recipes cannot be validated against a schema without it. To validate grow recipes during run time, install lxml through pip:
+
+`$ pip install lxml`
+
+Alternatively, you can manually validate grow recipes using a XML Schema validator, such as [xmllint](http://xmlsoft.org/xmllint.html).
+
 
 ## Installation
 
@@ -33,6 +39,9 @@ print('Temperature maximum ' + temperature_range.max)
 
 Setup with pip:
 `$ pip install -r requirements.txt`
+
+To test schema support, install lxml through pip, or run:
+`$ pip install -r optional-requirements.txt`
 
 To run tests, run `$ pytest`
 

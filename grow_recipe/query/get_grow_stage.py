@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from lxml import etree
+from xml.etree import ElementTree
 
 from grow_recipe import constants, check_for_error
 
@@ -18,7 +18,7 @@ def get_grow_stage(xml, start_time, query_time=None):
 
     xml.seek(0)
 
-    tree = etree.parse(xml)
+    tree = ElementTree.parse(xml)
 
     if not query_time:
         query_time = datetime.utcnow()
@@ -28,7 +28,7 @@ def get_grow_stage(xml, start_time, query_time=None):
 
     seconds_diff = (query_time - start_time).seconds
 
-    root = tree.xpath('/{root}'.format(root=constants.ROOT_NODE)).pop()
+    root = tree.getroot()
 
     # keeps track of the cumulative amount of seconds while checking
     # each stage
