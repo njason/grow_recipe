@@ -43,6 +43,8 @@ Setup with pip:
 To test schema support, install lxml through pip, or run:
 `$ pip install -r optional-requirements.txt`
 
+Also, include the `grow_recipe` package in editable mode by running `$ pip install -e .` in the repository root.
+
 To run tests, run `$ pytest`
 
-Unfortunately, setuptools does not support submodules (to my knowledge). So the [XML schema](grow_recipe/grow-recipe.xsd) must be kept updated with the [source](https://github.com/njason/grow-recipe-schema/blob/master/grow-recipe.xsd)
+Unfortunately, setuptools does not support submodules. So the [XML schema](grow_recipe/grow-recipe.xsd) must be kept updated with the [source](https://github.com/njason/grow-recipe-schema/blob/master/grow-recipe.xsd)
