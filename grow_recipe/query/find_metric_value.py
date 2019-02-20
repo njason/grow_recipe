@@ -1,4 +1,4 @@
-from lxml import etree
+from xml.etree import ElementTree
 
 from grow_recipe import constants, check_for_error
 
@@ -30,28 +30,26 @@ def find_metric_value(xml, stage, topic, metric):
 
     xml.seek(0)
 
-    tree = etree.parse(xml)
+    tree = ElementTree.parse(xml)
+    root = tree.getroot()
 
     if not stage:
         stage = constants.DEFAULT
 
-    value = tree.xpath('/{root}/{stage}/{topic}/{metric}'
+    value = root.find('{stage}/{topic}/{metric}'
                        .format(root=constants.ROOT_NODE, stage=stage,
                                topic=topic, metric=metric))
 
-    if not value:
-        value = tree.xpath('/{root}/{stage}/{topic}/{metric}'.format(
+    if value is None:
+        value = root.find('{stage}/{topic}/{metric}'.format(
             root=constants.ROOT_NODE,
             stage=constants.DEFAULT,
             topic=topic,
             metric=metric
         ))
 
-    if not value:
+    if value is None:
         return None
 
-    # there should only be definition if the metric is present
-    assert len(value) == 1
-
-    return Metric(value[0].attrib.get('min'),
-                  value[0].attrib.get('max'))
+    return Metric(value.attrib.get('min'),
+                  value.attrib.get('max'))
