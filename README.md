@@ -8,6 +8,9 @@ NOTE: [lxml](https://lxml.de/) is not a requirement, however grow recipes cannot
 
 Alternatively, you can manually validate grow recipes using a XML Schema validator, such as [xmllint](http://xmlsoft.org/xmllint.html).
 
+### Debian xmllint install:
+` $ apt install libxml2-utils`
+
 
 ## Installation
 
