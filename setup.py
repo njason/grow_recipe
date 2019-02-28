@@ -4,7 +4,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='grow-recipe',
-    version='0.10.0',
+    version='0.10.1',
     author='Jason Biegel',
     url='https://github.com/njason/grow-recipe-python',
     license='LICENSE',
