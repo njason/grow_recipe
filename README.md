@@ -1,16 +1,12 @@
-# Grow Recipe Python Wrapper
+# Grow Recipe Python SDK
 
-A python module to provide functionality to the [Grow Recipe Schema](https://github.com/njason/grow-recipe-schema)
+A python package to provide functionality to the [Grow Recipe Schema](https://github.com/njason/grow-recipe-schema)
 
 NOTE: [lxml](https://lxml.de/) is not a requirement, however grow recipes cannot be validated against a schema without it. To validate grow recipes during run time, install lxml through pip:
 
 `$ pip install lxml`
 
-Alternatively, you can manually validate grow recipes using a XML Schema validator, such as [xmllint](http://xmlsoft.org/xmllint.html).
-
-### Debian xmllint install:
-` $ apt install libxml2-utils`
-
+Alternatively, you can manually validate grow recipes using a XML Schema validator, such as [xmllint](http://xmlsoft.org/xmllint.html). Refer [here](https://github.com/njason/grow-recipe-schema#install-xmllint) for installation instructions.
 
 ## Installation
 
