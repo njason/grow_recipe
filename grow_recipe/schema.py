@@ -4,7 +4,7 @@ import os
 LXML_INSTALLED = True
 try:
     from lxml import etree
-except ModuleNotFoundError:
+except ImportError:
     LXML_INSTALLED = False
 
 DEFAULT_SCHEMA = os.path.join(os.path.dirname(__file__), 'grow-recipe.xsd')
